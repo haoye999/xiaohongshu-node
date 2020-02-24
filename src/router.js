@@ -1,5 +1,5 @@
 const Router = require('koa-router');
-const { getHomeFeed, getNoteDetail } = require('./apis');
+const { getHomeFeed, getNoteDetail, getUserDetail } = require('./apis');
 
 const router = new Router();
 
@@ -13,8 +13,9 @@ router.get('/api/note/:id', async (ctx) => {
   ctx.body = data;
 });
 
-router.get('/about', (ctx) => {
-  ctx.body = 'about';
+router.get('/api/user/:id', async (ctx) => {
+  const data = await getUserDetail(ctx.params.id);
+  ctx.body = data;
 });
 
 module.exports = router;

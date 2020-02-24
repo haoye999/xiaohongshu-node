@@ -29,3 +29,16 @@ exports.getNoteDetail = async function getNoteDetail(id) {
 
   return res.data;
 };
+
+exports.getUserDetail = async function getHomeFeed(id) {
+  const url = `/fe_api/burdock/v1/user/${id}`;
+  const res = await axios({
+    url: host + url,
+    method: 'GET',
+    headers: {
+      'x-sign': generateXSign(url),
+    },
+  });
+
+  return res.data;
+};
